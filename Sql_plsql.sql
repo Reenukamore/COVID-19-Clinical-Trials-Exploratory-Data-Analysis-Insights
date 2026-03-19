@@ -1,3 +1,4 @@
+-- SQL
 CREATE TABLE covid(
     Rank NUMBER,
     NCT_Number VARCHAR2(50),
@@ -40,7 +41,7 @@ SELECT status, COUNT(*) AS total
 FROM covid
 GROUP BY status
 ORDER BY total DESC;
---2. Analyzed how studies are distributed based on their current status.  
+-- Analyzed how studies are distributed based on their current status.  
 -----------------------------------------
 --3.Top 10 Most Studied Conditions
 SELECT *
@@ -51,19 +52,22 @@ FROM (
     ORDER BY total DESC
 )
 WHERE ROWNUM <= 10;
+-- Identified the top 10 most frequently studied medical conditions.  
 -------------------------------------------------
 4. Studies by Phase
 SELECT phases, COUNT(*) AS total
 FROM covid
 GROUP BY phases
 ORDER BY total DESC;
-
---? 5. Average Enrollment (Handled Safely)
+-- Examined the distribution of studies across different clinical phases.  
+----------------------------------------------------
+--5. Average Enrollment (Handled Safely)
 SELECT AVG(TO_NUMBER(enrollment)) AS avg_enrollment
 FROM covid
 WHERE REGEXP_LIKE(enrollment, '^[0-9]+$');
-
---? 6. Top Sponsors
+--  Calculated the average enrollment while safely handling non-numeric values.  
+--------------------------------------------------------------------
+--6. Top Sponsors
 SELECT *
 FROM (
     SELECT sponsor_collaborators, COUNT(*) AS total
@@ -72,26 +76,32 @@ FROM (
     ORDER BY COUNT(*) DESC
 )
 WHERE ROWNUM <= 10;
+--  Determined the top sponsors involved in clinical trials.  
 
---? 7. Gender-Based Studies
+------------------------------------------------------------------------
+--7. Gender-Based Studies
 SELECT gender, COUNT(*) AS total
 FROM covid
 GROUP BY gender
 ORDER BY total DESC;
-
---? 8. Study Type Distribution
+--Analyzed study distribution based on gender participation.  
+------------------------------------------------------------------------
+--8. Study Type Distribution
 SELECT study_type, COUNT(*) AS total
 FROM covid
 GROUP BY study_type
 ORDER BY total DESC;
+-- Explored the distribution of different study types.  
+------------------------------------------------------------------------
 
---? 9. Year-wise Trend (Oracle Style)
+--9. Year-wise Trend (Oracle Style)
 SELECT 
     REGEXP_SUBSTR(start_date, '[0-9]{4}') AS year,
     COUNT(*) AS total
 FROM covid
 GROUP BY REGEXP_SUBSTR(start_date, '[0-9]{4}')
 ORDER BY year;
+--Identified trends in clinical trials over the years.  
 
 ------------------------------------------------------
 --? 10. High Enrollment Completed Studies
@@ -101,8 +111,11 @@ WHERE status = 'Completed'
 AND REGEXP_LIKE(enrollment, '^[0-9]+$')
 AND TO_NUMBER(enrollment) > 1000
 ORDER BY enrollment DESC;
-
+-- Retrieved completed studies with high enrollment for deeper insights.  
+-------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+
+-- PlSQL
 set SERVEROUTPUT ON;
 --1.? 1. Count Studies by Status (Using Cursor)
 DECLARE
@@ -127,6 +140,7 @@ BEGIN
     CLOSE c_status;
 END;
 /
+    --Used a cursor to iterate through study statuses and display their counts.  
 -----------------------------------------------------------------------
 --2. Find High Enrollment Studies
 DECLARE
@@ -146,6 +160,8 @@ BEGIN
     END LOOP;
 END;
 /
+    -- Extracted and displayed studies with high enrollment using a loop.  
+
 ----------------------------------------------------------
 
 --3. Procedure: Get Studies by Phase
@@ -167,3 +183,4 @@ BEGIN
     get_studies_by_phase('Phase 3');
 END;
 /
+--  Created a stored procedure to count studies for a given clinical phase.  
