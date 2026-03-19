@@ -1,10 +1,7 @@
-# COVID-19-Clinical-Trials-Exploratory-Data-Analysis-Insights
-Analysis of 5,700+ COVID-19 clinical trials using Excel, Power BI, and SQL (Oracle) to uncover trends in trial status, phases, demographics, and global distribution through interactive dashboards.
-COVID-19 Clinical Trials Analysis
-COVID-19 clinical trials dashboard and SQL analysis project using Oracle Database. Features data cleaning, 10 key queries, 3 PL/SQL scripts, and Power BI visualization.
+# COVID-19-Clinical-Trials-Exploratory-Data-Analysis
+This project focuses on performing Exploratory Data Analysis (EDA) on COVID-19 clinical trials data to uncover meaningful insights and trends. The analysis aims to understand various aspects such as trial phases, locations, sponsors, and status distribution, helping to interpret the global response to the pandemic through data.
 
-#Project Overview
-Analyzed COVID-19 clinical trials dataset covering study status, phases, conditions, enrollment, sponsors, and trends. Built interactive dashboard showing distributions and maps. Used Oracle SQL for queries and PL/SQL for advanced processing.
+To achieve this, a combination of tools and technologies was used, including Excel for initial data cleaning and preprocessing, SQL and PL/SQL for efficient data querying and manipulation, Oracle Database for structured data storage, and Power BI for creating interactive dashboards and visualizations. The project demonstrates strong data handling, querying, and visualization skills while providing valuable insights into clinical research patterns during COVID-19.
 
 #Tech Stack
 Database: Oracle SQL
@@ -13,31 +10,56 @@ Queries: 10 SQL queries for insights
 PL/SQL: 3 scripts 
 Visualization: Power BI dashboard
 
-#Key Queries
-Demonstrate core analytics:
-Total studies count.
-Status distribution (e.g., Recruiting, Completed).
-Top 10 conditions.
-Studies by phase.
-Average enrollment (numeric only).
-Top 10 sponsors.
-Gender distribution.
-Study type breakdown.
-Start year trends.
+## Project Workflow
+-Excel--
+- Cleaned and preprocessed the raw dataset using Excel  
+- Removed null and missing values to ensure data accuracy  
+- Replaced inconsistent and incorrect entries with standardized values  
+- Handled duplicate records to maintain data integrity  
+- Formatted columns (dates, text, and numerical values) for consistency  
+- Renamed columns for better readability and understanding  
+- Filtered and organized the dataset to prepare it for further analysis  
 
-#PL/SQL Scripts
-Advanced processing:
-Cursor-based status count loop.
-FOR loop for high-enrollment studies.
-Stored procedure 
-High-enrollment completed studies (>1000 participants).
+### Data Analysis (SQL - Oracle)
+- Imported the cleaned CSV file into Oracle Database  
+- Wrote and executed 10 SQL queries to extract insights
+### SQL Query Descriptions
+1. Calculated the total number of clinical studies in the dataset.  
+2. Analyzed the distribution of studies based on their current status.  
+3. Identified the top 10 most frequently studied medical conditions.  
+4. Examined how studies are distributed across different clinical phases.  
+5. Computed the average enrollment while handling non-numeric data safely.  
+6. Determined the top sponsors contributing to clinical trials.  
+7. Analyzed study distribution based on gender participation.  
+8. Explored the distribution of different study types.  
+9. Identified year-wise trends in study initiation.  
+10. Retrieved completed studies with high enrollment for deeper insights.
+    
+## PL/SQL Scripts
+Developed 3 PL/SQL scripts for procedural data analysis
+### PL/SQL Script Descriptions
+1. Used a cursor to iterate through study statuses and display their counts.  
+2. Extracted and displayed studies with high enrollment using a loop.  
+3. Created a stored procedure to count studies for a given clinical phase.
 
-#Dashboard Features​
-Study count by phase (bar chart).
-Status pie chart.
-Conditions histogram.
-World map of locations.
-Enrollment and sponsor visuals.
+### Dashboard (Power BI)
 
-This project provides comprehensive insights into COVID-19 clinical trials through SQL analysis and interactive visualization, demonstrating full ETL pipeline from Excel cleaning to Oracle database and Power BI dashboard.
-In conclusion, this end-to-end analytics solution equips researchers and stakeholders with actionable intelligence on trial distributions, enrollment trends, and sponsor activity—ready for production deployment or portfolio showcase.
+- Designed an interactive dashboard in Power BI to visualize key insights from the clinical trials dataset  
+
+#### Key KPIs
+- Total number of clinical trials  
+- Total enrollment (sum of participants)  
+- Trials with available results  
+- Completed clinical trials  
+- Average enrollment  
+- Median enrollment  
+#### Visualizations
+- Line chart showing year-wise distribution of clinical trials  
+- Bar chart representing distribution of clinical trials by phase  
+- Bar chart displaying total enrollment across different study phases  
+- Pie chart illustrating the number of clinical trials by study status  
+- Map visualization showing geographical distribution of clinical trials
+
+## Project Overview
+
+This project presents an end-to-end Exploratory Data Analysis (EDA) of COVID-19 clinical trials data using a combination of Excel, Oracle SQL, PL/SQL, and Power BI. It involves data cleaning, database querying, and interactive dashboard creation to uncover key insights such as study distribution, enrollment trends, sponsor activity, and geographical patterns. The project highlights strong skills in data preprocessing, analytical querying, and data visualization to better understand global clinical research during the pandemic.
